@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549282468342.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E5044327",
+    "lastKnownWriteTime" : 1549287623,
+    "last_content_update" : 1551884878332,
+    "path" : "~/Dropbox/git/OpenMakingKit/2019_GPS_TINYSCREEN/example_data/basic_analysis_and_map.R",
+    "project_path" : "basic_analysis_and_map.R",
+    "properties" : {
+        "cursorPosition" : "75,0",
+        "scrollLine" : "27"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

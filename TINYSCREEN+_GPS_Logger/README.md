@@ -17,7 +17,7 @@ The contributions here reflect the  author(s) and not necessarily those of the N
 		* TinyScreen+ (Processor, OLED & USB in one) *ASM2022*
 		* GPS TINYSHIELD *ASD2501-R* 
 		* MICROSD TINYSHIELD *ASD2201-R*
-		* LITHIUM ION POLYMER BATTERY - 3.7V 150MAH *ASR00003*
+		* LITHIUM ION POLYMER BATTERY - 3.7V 290 mAh *ASR00003*
 	* Micro SD Card (any capacity, generic)
 	* PLA 3D print filament (generic)
 

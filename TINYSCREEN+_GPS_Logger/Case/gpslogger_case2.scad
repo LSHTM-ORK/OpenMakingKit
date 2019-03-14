@@ -45,7 +45,7 @@ if(buttons1==1)
 //buttons1
 //rotate([0,90,180])translate([-1.5,-21,-2])color("blue")
 {
-translate([-18,2.5,0])cube([7,16,1],center=false);
+translate([-18,2.5,0])cube([7,16,0.5],center=false);
 translate([-14.5,7,0])cylinder(h=5,r=2.5,$fn=60);
 translate([-14.5,14,0])cylinder(h=5,r=2.5,$fn=60);
 }
@@ -56,7 +56,7 @@ if(buttons2==1)
 //buttons2
 translate([-8,0,0])
 {
-translate([-18,2.5,0])cube([7,16,1.],center=false);
+translate([-18,2.5,0])cube([7,16,0.5],center=false);
 translate([-14.5,7,0])cylinder(h=5,r=2.5,$fn=60);
 translate([-14.5,14,0])cylinder(h=5,r=2.5,$fn=60);
 }

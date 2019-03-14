@@ -126,7 +126,7 @@ void setup() {
 
 SerialMonitorInterface.println("printing to SD file - test");   
 File dataFile = SD.open("datalog.txt", FILE_WRITE);
-dataFile.println("Starting new log...");
+dataFile.println("");
 dataFile.close();
 
 
@@ -469,6 +469,9 @@ void logintervals_basic() {
   display.setCursor(3,15);
   display.print(" # ");
   display.print(counter);
+  display.setCursor(3,25);
+  display.print(" # ");
+  display.print(counter);
   delay(1000);
   display.clearScreen();
   delay(100);
@@ -499,8 +502,7 @@ if (dataFile)
       dataFile.print("\t");
       dataFile.print(gps.time.second());   
       dataFile.print("\t");
-      dataFile.print(gps.hdop.value());     
-      dataFile.println("Logged_by_basic_logger");     
+      dataFile.println(gps.hdop.value());     
       dataFile.close();
     }
   display.clearScreen();

@@ -46,12 +46,13 @@ SoftwareSerial softSerial(GPS_RXPin, GPS_TXPin);
 
 #define Gps_serial softSerial
 
+int counter=1;
 
 ////////////////////////////////////  
 //Set default sleep time to 3 minutes
 ////////////////////////////////////  
 
- int sleeptime = 180000;
+ int sleeptime = 10000;
 ////////////////////////////////////  
 //Make a variable for number of tries when signal is bad
 ////////////////////////////////////  
@@ -396,7 +397,6 @@ char waitForCharacter() {
     
 void logintervals_basic() {
 
- int counter=1;
  while(!display.getButtons(TSButtonLowerRight))
  {
  unsigned long start = millis();
@@ -467,11 +467,10 @@ void logintervals_basic() {
   display.clearScreen();
   display.setFont(liberationSans_8ptFontInfo);
   display.setCursor(3,15);
-  display.print(" # ");
-  display.print(counter);
-  display.setCursor(3,25);
-  display.print(" # ");
-  display.print(counter);
+//  display.print(" # ");
+//  display.print(counter);
+//  display.setCursor(3,25);
+
   delay(1000);
   display.clearScreen();
   delay(100);

@@ -5,6 +5,7 @@ https://creativecommons.org/licenses/by-sa/3.0/deed
 
 
 
+
 Written by Chrissy h Roberts, Emergency and Epidemics Data Kit, London School of Hygiene and Tropical Medicine
 
 This project was supported by the National Institute for Health Research (NIHR) [Policy Research Programme (PR-OD-1017-20001)]. 
@@ -55,5 +56,5 @@ Set logging interval, then press bottom right to go back
 Press top left to start logging.  
 
 
-
+![](./supporting_files/gpslogger.jpeg "LSHTM ORK Open GPS")
   

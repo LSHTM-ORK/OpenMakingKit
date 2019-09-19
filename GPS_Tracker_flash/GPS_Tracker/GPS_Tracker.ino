@@ -83,7 +83,12 @@ char nmea[] = {'1'/*GPGGA*/, '0'/*GNGLL*/, '0'/*GNGSA*/, '0'/*GPGSV/GLGSV*/, '1'
 void setup()
 {
 
-
+  // FLASH LED ONCE FOR TWO SECONDS TO SHOW POWER ON
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(2000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+   
   Gps_Serial.begin(GPSBaud);
   SerialMonitorInterface.begin(115200);
 
@@ -127,6 +132,19 @@ void setup()
   
   SerialMonitorInterface.println("Now initiating write mode.");
   
+  // FLASH LED LONG SHORT SHORT TO SHOW INITIALISE WRITE MODE
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
 
   // Init the GPS Module to wake mode
   pinMode(GPS_SYSONPin, INPUT);
@@ -172,13 +190,16 @@ void setup()
 
 void loop() {
 
+  
   unsigned long startTime = millis();
   while (Gps_Serial.read() != '$') {
  
-// FLASH LED TWICE TO SHOW FLASH MEMORY ENABLED
-
-                   SerialMonitorInterface.println(Gps_Serial.read());
-
+// FLASH LED ONCE TO SHOW NO CONNECTION
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(100);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  
   }
   while (Gps_Serial.available() < 5);
   Gps_Serial.read(); 
@@ -189,22 +210,17 @@ void loop() {
     c = Gps_Serial.read();
     if (c == 'M') {
       logNMEA(1);
-      SerialMonitorInterface.println("2");
 
-      SerialMonitorInterface.println(c);
 
       } else if (c == 'G') {
       logNMEA(2);
-      SerialMonitorInterface.println("3");
 
     }
   }
-  SerialMonitorInterface.println("4");
   // Waits 10 seconds before reading next NMEA string
   while (millis() - startTime < 10000) {
     Gps_Serial.read(); // clears GPS serial buffer
   }
-                 SerialMonitorInterface.println("loop");
  
 }
 
@@ -257,8 +273,12 @@ void logNMEA(uint8_t type) {
   address += strlen((char *)buffer); // Sets address ahead for length of the nmea string
  
   SerialMonitorInterface.println((char *)buffer);
+  // FLASH LED TWICE TO SHOW NMEA WRITE
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(75);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
     
- // digitalWrite(LED_BUILTIN, HIGH);
 
 }
 

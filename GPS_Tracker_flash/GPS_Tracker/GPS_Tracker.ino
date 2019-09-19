@@ -192,26 +192,10 @@ void loop() {
       SerialMonitorInterface.println("2");
 
       SerialMonitorInterface.println(c);
-      digitalWrite( 8, HIGH );
-      digitalWrite( 7, LOW );
-     
-      pinMode(5, INPUT);  
-      pinMode(6, INPUT);  
-      pinMode(7, OUTPUT);  
-      pinMode(8, OUTPUT);  
-      pinMode(9, INPUT);    
+
       } else if (c == 'G') {
       logNMEA(2);
       SerialMonitorInterface.println("3");
-        digitalWrite( 8, HIGH );
-      digitalWrite( 9, LOW );
-     
-      pinMode(5, INPUT);  
-      pinMode(6, INPUT);  
-      pinMode(7, INPUT);  
-      pinMode(8, OUTPUT);  
-      pinMode(9, OUTPUT);       
-      SerialMonitorInterface.println(c);
 
     }
   }

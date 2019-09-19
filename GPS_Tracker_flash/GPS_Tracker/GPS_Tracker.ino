@@ -83,19 +83,6 @@ char nmea[] = {'1'/*GPGGA*/, '0'/*GNGLL*/, '0'/*GNGSA*/, '0'/*GPGSV/GLGSV*/, '1'
 void setup()
 {
 
- pinMode(LED_BUILTIN, OUTPUT);
-
-
-// FLASH LED ONCE TO SHOW TURNED ON
-  digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
-digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-  digitalWrite(LED_BUILTIN, HIGH);
-    delay(100);
-digitalWrite(LED_BUILTIN, LOW);
-    delay(100);
-
 
   Gps_Serial.begin(GPSBaud);
   SerialMonitorInterface.begin(115200);
@@ -103,25 +90,10 @@ digitalWrite(LED_BUILTIN, LOW);
     delay(5000);
   SerialMonitorInterface.println("Turned on");
 
-  digitalWrite(LED_BUILTIN, LOW);
 
   SerialMonitorInterface.println("Initializing Flash Memory...");
 
 
-// FLASH LED TWICE TO SHOW FLASH MEMORY ENABLED
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
-digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-  digitalWrite(LED_BUILTIN, HIGH);
-    delay(100);
-digitalWrite(LED_BUILTIN, LOW);
-    delay(100);
-digitalWrite(LED_BUILTIN, HIGH);
-    delay(100);
-digitalWrite(LED_BUILTIN, LOW);
-
-  
   pinMode(flashCS, OUTPUT); // Ensure chip select pin is an output.
   flash.begin(); // Boots the flash memory
 
@@ -204,12 +176,7 @@ void loop() {
   while (Gps_Serial.read() != '$') {
  
 // FLASH LED TWICE TO SHOW FLASH MEMORY ENABLED
-pinMode(LED_BUILTIN, OUTPUT);
 
-    delay(100);
-digitalWrite(LED_BUILTIN, HIGH);
-    delay(100);
-digitalWrite(LED_BUILTIN, LOW);
                    SerialMonitorInterface.println(Gps_Serial.read());
 
   }
@@ -224,41 +191,26 @@ digitalWrite(LED_BUILTIN, LOW);
       logNMEA(1);
       SerialMonitorInterface.println("2");
 
-      pinMode(LED_BUILTIN, OUTPUT);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
       SerialMonitorInterface.println(c);
-
+      digitalWrite( 8, HIGH );
+      digitalWrite( 7, LOW );
+     
+      pinMode(5, INPUT);  
+      pinMode(6, INPUT);  
+      pinMode(7, OUTPUT);  
+      pinMode(8, OUTPUT);  
+      pinMode(9, INPUT);    
       } else if (c == 'G') {
       logNMEA(2);
       SerialMonitorInterface.println("3");
-            pinMode(LED_BUILTIN, OUTPUT);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
-      delay(100);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite( 8, HIGH );
+      digitalWrite( 9, LOW );
+     
+      pinMode(5, INPUT);  
+      pinMode(6, INPUT);  
+      pinMode(7, INPUT);  
+      pinMode(8, OUTPUT);  
+      pinMode(9, OUTPUT);       
       SerialMonitorInterface.println(c);
 
     }
@@ -320,7 +272,8 @@ void logNMEA(uint8_t type) {
   flash.writeCharArray(address, (char *)buffer, strlen((char *)buffer));
   address += strlen((char *)buffer); // Sets address ahead for length of the nmea string
  
-  SerialMonitorInterface.println(c);
+  SerialMonitorInterface.println((char *)buffer);
+    
  // digitalWrite(LED_BUILTIN, HIGH);
 
 }

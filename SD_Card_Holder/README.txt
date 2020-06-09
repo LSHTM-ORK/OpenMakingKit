@@ -1,0 +1,1 @@
+Simple Parametric SD Card Holder by buteomont on Thingiverse: https://www.thingiverse.com/thing:4129829

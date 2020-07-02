@@ -1,0 +1,270 @@
+#https://courses.cs.washington.edu/courses/cse370/01au/minirproject/BarcodeBattlers/barcodes.html
+
+
+code128barcode<-function(x)
+
+{
+barcodelength<-nchar(x)
+
+#this dataset is based on startC
+#add a startB
+output<-"11010010000"
+checksum<-104
+
+for(i in 1:barcodelength)
+{
+currentchar<-substr(x,start =i,stop = i )
+if(currentchar=="SP"){currentchar<-sub(pattern = "SP", replacement = "11011001100", x= currentchar);checksum<-checksum+(0*i)}
+if(currentchar=="!"){currentchar<-sub(pattern = "!", replacement = "11001101100", x= currentchar);checksum<-checksum+(1*i)}
+if(currentchar=="\""){currentchar<-sub(pattern = "\"", replacement = "11001100110", x= currentchar);checksum<-checksum+(2*i)}
+if(currentchar=="#"){currentchar<-sub(pattern = "#", replacement = "10010011000", x= currentchar);checksum<-checksum+(3*i)}
+if(currentchar=="$"){currentchar<-sub(pattern = "$", replacement = "10010001100", x= currentchar);checksum<-checksum+(4*i)}
+if(currentchar=="%"){currentchar<-sub(pattern = "%", replacement = "10001001100", x= currentchar);checksum<-checksum+(5*i)}
+if(currentchar=="&"){currentchar<-sub(pattern = "&", replacement = "10011001000", x= currentchar);checksum<-checksum+(6*i)}
+if(currentchar=="'"){currentchar<-sub(pattern = "'", replacement = "10011000100", x= currentchar);checksum<-checksum+(7*i)}
+if(currentchar=="("){currentchar<-sub(pattern = "(", replacement = "10001100100", x= currentchar);checksum<-checksum+(8*i)}
+if(currentchar==")"){currentchar<-sub(pattern = ")", replacement = "11001001000", x= currentchar);checksum<-checksum+(9*i)}
+if(currentchar=="*"){currentchar<-sub(pattern = "*", replacement = "11001000100", x= currentchar);checksum<-checksum+(10*i)}
+if(currentchar=="+"){currentchar<-sub(pattern = "+", replacement = "11000100100", x= currentchar);checksum<-checksum+(11*i)}
+if(currentchar==","){currentchar<-sub(pattern = ",", replacement = "10110011100", x= currentchar);checksum<-checksum+(12*i)}
+if(currentchar=="-"){currentchar<-sub(pattern = "-", replacement = "10011011100", x= currentchar);checksum<-checksum+(13*i)}
+if(currentchar=="."){currentchar<-sub(pattern = ".", replacement = "10011001110", x= currentchar);checksum<-checksum+(14*i)}
+if(currentchar=="/"){currentchar<-sub(pattern = "/", replacement = "10111001100", x= currentchar);checksum<-checksum+(15*i)}
+if(currentchar=="0"){currentchar<-sub(pattern = "0", replacement = "10011101100", x= currentchar);checksum<-checksum+(16*i)}
+if(currentchar=="1"){currentchar<-sub(pattern = "1", replacement = "10011100110", x= currentchar);checksum<-checksum+(17*i)}
+if(currentchar=="2"){currentchar<-sub(pattern = "2", replacement = "11001110010", x= currentchar);checksum<-checksum+(18*i)}
+if(currentchar=="3"){currentchar<-sub(pattern = "3", replacement = "11001011100", x= currentchar);checksum<-checksum+(19*i)}
+if(currentchar=="4"){currentchar<-sub(pattern = "4", replacement = "11001001110", x= currentchar);checksum<-checksum+(20*i)}
+if(currentchar=="5"){currentchar<-sub(pattern = "5", replacement = "11011100100", x= currentchar);checksum<-checksum+(21*i)}
+if(currentchar=="6"){currentchar<-sub(pattern = "6", replacement = "11001110100", x= currentchar);checksum<-checksum+(22*i)}
+if(currentchar=="7"){currentchar<-sub(pattern = "7", replacement = "11101101110", x= currentchar);checksum<-checksum+(23*i)}
+if(currentchar=="8"){currentchar<-sub(pattern = "8", replacement = "11101001100", x= currentchar);checksum<-checksum+(24*i)}
+if(currentchar=="9"){currentchar<-sub(pattern = "9", replacement = "11100101100", x= currentchar);checksum<-checksum+(25*i)}
+if(currentchar==":"){currentchar<-sub(pattern = ":", replacement = "11100100110", x= currentchar);checksum<-checksum+(26*i)}
+if(currentchar==";"){currentchar<-sub(pattern = ";", replacement = "11101100100", x= currentchar);checksum<-checksum+(27*i)}
+if(currentchar=="<"){currentchar<-sub(pattern = "<", replacement = "11100110100", x= currentchar);checksum<-checksum+(28*i)}
+if(currentchar=="="){currentchar<-sub(pattern = "=", replacement = "11100110010", x= currentchar);checksum<-checksum+(29*i)}
+if(currentchar==">"){currentchar<-sub(pattern = ">", replacement = "11011011000", x= currentchar);checksum<-checksum+(30*i)}
+if(currentchar=="?"){currentchar<-sub(pattern = "?", replacement = "11011000110", x= currentchar);checksum<-checksum+(31*i)}
+if(currentchar=="@"){currentchar<-sub(pattern = "@", replacement = "11000110110", x= currentchar);checksum<-checksum+(32*i)}
+if(currentchar=="A"){currentchar<-sub(pattern = "A", replacement = "10100011000", x= currentchar);checksum<-checksum+(33*i)}
+if(currentchar=="B"){currentchar<-sub(pattern = "B", replacement = "10001011000", x= currentchar);checksum<-checksum+(34*i)}
+if(currentchar=="C"){currentchar<-sub(pattern = "C", replacement = "10001000110", x= currentchar);checksum<-checksum+(35*i)}
+if(currentchar=="D"){currentchar<-sub(pattern = "D", replacement = "10110001000", x= currentchar);checksum<-checksum+(36*i)}
+if(currentchar=="E"){currentchar<-sub(pattern = "E", replacement = "10001101000", x= currentchar);checksum<-checksum+(37*i)}
+if(currentchar=="F"){currentchar<-sub(pattern = "F", replacement = "10001100010", x= currentchar);checksum<-checksum+(38*i)}
+if(currentchar=="G"){currentchar<-sub(pattern = "G", replacement = "11010001000", x= currentchar);checksum<-checksum+(39*i)}
+if(currentchar=="H"){currentchar<-sub(pattern = "H", replacement = "11000101000", x= currentchar);checksum<-checksum+(40*i)}
+if(currentchar=="I"){currentchar<-sub(pattern = "I", replacement = "11000100010", x= currentchar);checksum<-checksum+(41*i)}
+if(currentchar=="J"){currentchar<-sub(pattern = "J", replacement = "10110111000", x= currentchar);checksum<-checksum+(42*i)}
+if(currentchar=="K"){currentchar<-sub(pattern = "K", replacement = "10110001110", x= currentchar);checksum<-checksum+(43*i)}
+if(currentchar=="L"){currentchar<-sub(pattern = "L", replacement = "10001101110", x= currentchar);checksum<-checksum+(44*i)}
+if(currentchar=="M"){currentchar<-sub(pattern = "M", replacement = "10111011000", x= currentchar);checksum<-checksum+(45*i)}
+if(currentchar=="N"){currentchar<-sub(pattern = "N", replacement = "10111000110", x= currentchar);checksum<-checksum+(46*i)}
+if(currentchar=="O"){currentchar<-sub(pattern = "O", replacement = "10001110110", x= currentchar);checksum<-checksum+(47*i)}
+if(currentchar=="P"){currentchar<-sub(pattern = "P", replacement = "11101110110", x= currentchar);checksum<-checksum+(48*i)}
+if(currentchar=="Q"){currentchar<-sub(pattern = "Q", replacement = "11010001110", x= currentchar);checksum<-checksum+(49*i)}
+if(currentchar=="R"){currentchar<-sub(pattern = "R", replacement = "11000101110", x= currentchar);checksum<-checksum+(50*i)}
+if(currentchar=="S"){currentchar<-sub(pattern = "S", replacement = "11011101000", x= currentchar);checksum<-checksum+(51*i)}
+if(currentchar=="T"){currentchar<-sub(pattern = "T", replacement = "11011100010", x= currentchar);checksum<-checksum+(52*i)}
+if(currentchar=="U"){currentchar<-sub(pattern = "U", replacement = "11011101110", x= currentchar);checksum<-checksum+(53*i)}
+if(currentchar=="V"){currentchar<-sub(pattern = "V", replacement = "11101011000", x= currentchar);checksum<-checksum+(54*i)}
+if(currentchar=="W"){currentchar<-sub(pattern = "W", replacement = "11101000110", x= currentchar);checksum<-checksum+(55*i)}
+if(currentchar=="X"){currentchar<-sub(pattern = "X", replacement = "11100010110", x= currentchar);checksum<-checksum+(56*i)}
+if(currentchar=="Y"){currentchar<-sub(pattern = "Y", replacement = "11101101000", x= currentchar);checksum<-checksum+(57*i)}
+if(currentchar=="Z"){currentchar<-sub(pattern = "Z", replacement = "11101100010", x= currentchar);checksum<-checksum+(58*i)}
+if(currentchar=="["){currentchar<-sub(pattern = "[", replacement = "11100011010", x= currentchar);checksum<-checksum+(59*i)}
+if(currentchar=="\\"){currentchar<-sub(pattern = "\\", replacement = "11101111010", x= currentchar);checksum<-checksum+(60*i)}
+if(currentchar=="]"){currentchar<-sub(pattern = "]", replacement = "11001000010", x= currentchar);checksum<-checksum+(61*i)}
+if(currentchar=="SPAE"){currentchar<-sub(pattern = "SPAE", replacement = "11110001010", x= currentchar);checksum<-checksum+(62*i)}
+if(currentchar=="_"){currentchar<-sub(pattern = "_", replacement = "10100110000", x= currentchar);checksum<-checksum+(63*i)}
+if(currentchar=="`"){currentchar<-sub(pattern = "`", replacement = "10100001100", x= currentchar);checksum<-checksum+(64*i)}
+if(currentchar=="a"){currentchar<-sub(pattern = "a", replacement = "10010110000", x= currentchar);checksum<-checksum+(65*i)}
+if(currentchar=="b"){currentchar<-sub(pattern = "b", replacement = "10010000110", x= currentchar);checksum<-checksum+(66*i)}
+if(currentchar=="c"){currentchar<-sub(pattern = "c", replacement = "10000101100", x= currentchar);checksum<-checksum+(67*i)}
+if(currentchar=="d"){currentchar<-sub(pattern = "d", replacement = "10000100110", x= currentchar);checksum<-checksum+(68*i)}
+if(currentchar=="e"){currentchar<-sub(pattern = "e", replacement = "10110010000", x= currentchar);checksum<-checksum+(69*i)}
+if(currentchar=="f"){currentchar<-sub(pattern = "f", replacement = "10110000100", x= currentchar);checksum<-checksum+(70*i)}
+if(currentchar=="g"){currentchar<-sub(pattern = "g", replacement = "10011010000", x= currentchar);checksum<-checksum+(71*i)}
+if(currentchar=="h"){currentchar<-sub(pattern = "h", replacement = "10011000010", x= currentchar);checksum<-checksum+(72*i)}
+if(currentchar=="I"){currentchar<-sub(pattern = "I", replacement = "10000110100", x= currentchar);checksum<-checksum+(73*i)}
+if(currentchar=="j"){currentchar<-sub(pattern = "j", replacement = "10000110010", x= currentchar);checksum<-checksum+(74*i)}
+if(currentchar=="k"){currentchar<-sub(pattern = "k", replacement = "11000010010", x= currentchar);checksum<-checksum+(75*i)}
+if(currentchar=="l"){currentchar<-sub(pattern = "l", replacement = "11001010000", x= currentchar);checksum<-checksum+(76*i)}
+if(currentchar=="m"){currentchar<-sub(pattern = "m", replacement = "11110111010", x= currentchar);checksum<-checksum+(77*i)}
+if(currentchar=="n"){currentchar<-sub(pattern = "n", replacement = "11000010100", x= currentchar);checksum<-checksum+(78*i)}
+if(currentchar=="o"){currentchar<-sub(pattern = "o", replacement = "10001111010", x= currentchar);checksum<-checksum+(79*i)}
+if(currentchar=="p"){currentchar<-sub(pattern = "p", replacement = "10100111100", x= currentchar);checksum<-checksum+(80*i)}
+if(currentchar=="q"){currentchar<-sub(pattern = "q", replacement = "10010111100", x= currentchar);checksum<-checksum+(81*i)}
+if(currentchar=="r"){currentchar<-sub(pattern = "r", replacement = "10010011110", x= currentchar);checksum<-checksum+(82*i)}
+if(currentchar=="s"){currentchar<-sub(pattern = "s", replacement = "10111100100", x= currentchar);checksum<-checksum+(83*i)}
+if(currentchar=="t"){currentchar<-sub(pattern = "t", replacement = "10011110100", x= currentchar);checksum<-checksum+(84*i)}
+if(currentchar=="u"){currentchar<-sub(pattern = "u", replacement = "10011110010", x= currentchar);checksum<-checksum+(85*i)}
+if(currentchar=="v"){currentchar<-sub(pattern = "v", replacement = "11110100100", x= currentchar);checksum<-checksum+(86*i)}
+if(currentchar=="w"){currentchar<-sub(pattern = "w", replacement = "11110010100", x= currentchar);checksum<-checksum+(87*i)}
+if(currentchar=="x"){currentchar<-sub(pattern = "x", replacement = "11110010010", x= currentchar);checksum<-checksum+(88*i)}
+if(currentchar=="y"){currentchar<-sub(pattern = "y", replacement = "11011011110", x= currentchar);checksum<-checksum+(89*i)}
+if(currentchar=="z"){currentchar<-sub(pattern = "z", replacement = "11011110110", x= currentchar);checksum<-checksum+(90*i)}
+if(currentchar=="{"){currentchar<-sub(pattern = "{", replacement = "11110110110", x= currentchar);checksum<-checksum+(91*i)}
+if(currentchar=="|"){currentchar<-sub(pattern = "|", replacement = "10101111000", x= currentchar);checksum<-checksum+(92*i)}
+if(currentchar=="}"){currentchar<-sub(pattern = "}", replacement = "10100011110", x= currentchar);checksum<-checksum+(93*i)}
+if(currentchar=="~"){currentchar<-sub(pattern = "~", replacement = "10001011110", x= currentchar);checksum<-checksum+(94*i)}
+if(currentchar=="DEL"){currentchar<-sub(pattern = "DEL", replacement = "10111101000", x= currentchar);checksum<-checksum+(95*i)}
+if(currentchar=="FNC3"){currentchar<-sub(pattern = "FNC3", replacement = "10111100010", x= currentchar);checksum<-checksum+(96*i)}
+if(currentchar=="FNC2"){currentchar<-sub(pattern = "FNC2", replacement = "11110101000", x= currentchar);checksum<-checksum+(97*i)}
+if(currentchar=="SHIFT"){currentchar<-sub(pattern = "SHIFT", replacement = "11110100010", x= currentchar);checksum<-checksum+(98*i)}
+if(currentchar=="Code C"){currentchar<-sub(pattern = "Code C", replacement = "10111011110", x= currentchar);checksum<-checksum+(99*i)}
+if(currentchar=="FNC4"){currentchar<-sub(pattern = "FNC4", replacement = "10111101110", x= currentchar);checksum<-checksum+(100*i)}
+if(currentchar=="Code A"){currentchar<-sub(pattern = "Code A", replacement = "11101011110", x= currentchar);checksum<-checksum+(101*i)}
+if(currentchar=="FNC1"){currentchar<-sub(pattern = "FNC1", replacement = "11110101110", x= currentchar);checksum<-checksum+(102*i)}
+if(currentchar=="START A"){currentchar<-sub(pattern = "START A", replacement = "11010000100", x= currentchar);checksum<-checksum+(103*i)}
+if(currentchar=="START B"){currentchar<-sub(pattern = "START B", replacement = "11010010000", x= currentchar);checksum<-checksum+(104*i)}
+if(currentchar=="START C"){currentchar<-sub(pattern = "START C", replacement = "11010011100", x= currentchar);checksum<-checksum+(105*i)}
+output<-paste(output,currentchar,sep="")
+}
+
+#add modulo 103 checksum
+checksum<-checksum %% 103
+if(checksum==0){output<-paste(output,"11011001100",sep="")}
+if(checksum==1){output<-paste(output,"11001101100",sep="")}
+if(checksum==2){output<-paste(output,"11001100110",sep="")}
+if(checksum==3){output<-paste(output,"10010011000",sep="")}
+if(checksum==4){output<-paste(output,"10010001100",sep="")}
+if(checksum==5){output<-paste(output,"10001001100",sep="")}
+if(checksum==6){output<-paste(output,"10011001000",sep="")}
+if(checksum==7){output<-paste(output,"10011000100",sep="")}
+if(checksum==8){output<-paste(output,"10001100100",sep="")}
+if(checksum==9){output<-paste(output,"11001001000",sep="")}
+if(checksum==10){output<-paste(output,"11001000100",sep="")}
+if(checksum==11){output<-paste(output,"11000100100",sep="")}
+if(checksum==12){output<-paste(output,"10110011100",sep="")}
+if(checksum==13){output<-paste(output,"10011011100",sep="")}
+if(checksum==14){output<-paste(output,"10011001110",sep="")}
+if(checksum==15){output<-paste(output,"10111001100",sep="")}
+if(checksum==16){output<-paste(output,"10011101100",sep="")}
+if(checksum==17){output<-paste(output,"10011100110",sep="")}
+if(checksum==18){output<-paste(output,"11001110010",sep="")}
+if(checksum==19){output<-paste(output,"11001011100",sep="")}
+if(checksum==20){output<-paste(output,"11001001110",sep="")}
+if(checksum==21){output<-paste(output,"11011100100",sep="")}
+if(checksum==22){output<-paste(output,"11001110100",sep="")}
+if(checksum==23){output<-paste(output,"11101101110",sep="")}
+if(checksum==24){output<-paste(output,"11101001100",sep="")}
+if(checksum==25){output<-paste(output,"11100101100",sep="")}
+if(checksum==26){output<-paste(output,"11100100110",sep="")}
+if(checksum==27){output<-paste(output,"11101100100",sep="")}
+if(checksum==28){output<-paste(output,"11100110100",sep="")}
+if(checksum==29){output<-paste(output,"11100110010",sep="")}
+if(checksum==30){output<-paste(output,"11011011000",sep="")}
+if(checksum==31){output<-paste(output,"11011000110",sep="")}
+if(checksum==32){output<-paste(output,"11000110110",sep="")}
+if(checksum==33){output<-paste(output,"10100011000",sep="")}
+if(checksum==34){output<-paste(output,"10001011000",sep="")}
+if(checksum==35){output<-paste(output,"10001000110",sep="")}
+if(checksum==36){output<-paste(output,"10110001000",sep="")}
+if(checksum==37){output<-paste(output,"10001101000",sep="")}
+if(checksum==38){output<-paste(output,"10001100010",sep="")}
+if(checksum==39){output<-paste(output,"11010001000",sep="")}
+if(checksum==40){output<-paste(output,"11000101000",sep="")}
+if(checksum==41){output<-paste(output,"11000100010",sep="")}
+if(checksum==42){output<-paste(output,"10110111000",sep="")}
+if(checksum==43){output<-paste(output,"10110001110",sep="")}
+if(checksum==44){output<-paste(output,"10001101110",sep="")}
+if(checksum==45){output<-paste(output,"10111011000",sep="")}
+if(checksum==46){output<-paste(output,"10111000110",sep="")}
+if(checksum==47){output<-paste(output,"10001110110",sep="")}
+if(checksum==48){output<-paste(output,"11101110110",sep="")}
+if(checksum==49){output<-paste(output,"11010001110",sep="")}
+if(checksum==50){output<-paste(output,"11000101110",sep="")}
+if(checksum==51){output<-paste(output,"11011101000",sep="")}
+if(checksum==52){output<-paste(output,"11011100010",sep="")}
+if(checksum==53){output<-paste(output,"11011101110",sep="")}
+if(checksum==54){output<-paste(output,"11101011000",sep="")}
+if(checksum==55){output<-paste(output,"11101000110",sep="")}
+if(checksum==56){output<-paste(output,"11100010110",sep="")}
+if(checksum==57){output<-paste(output,"11101101000",sep="")}
+if(checksum==58){output<-paste(output,"11101100010",sep="")}
+if(checksum==59){output<-paste(output,"11100011010",sep="")}
+if(checksum==60){output<-paste(output,"11101111010",sep="")}
+if(checksum==61){output<-paste(output,"11001000010",sep="")}
+if(checksum==62){output<-paste(output,"11110001010",sep="")}
+if(checksum==63){output<-paste(output,"10100110000",sep="")}
+if(checksum==64){output<-paste(output,"10100001100",sep="")}
+if(checksum==65){output<-paste(output,"10010110000",sep="")}
+if(checksum==66){output<-paste(output,"10010000110",sep="")}
+if(checksum==67){output<-paste(output,"10000101100",sep="")}
+if(checksum==68){output<-paste(output,"10000100110",sep="")}
+if(checksum==69){output<-paste(output,"10110010000",sep="")}
+if(checksum==70){output<-paste(output,"10110000100",sep="")}
+if(checksum==71){output<-paste(output,"10011010000",sep="")}
+if(checksum==72){output<-paste(output,"10011000010",sep="")}
+if(checksum==73){output<-paste(output,"10000110100",sep="")}
+if(checksum==74){output<-paste(output,"10000110010",sep="")}
+if(checksum==75){output<-paste(output,"11000010010",sep="")}
+if(checksum==76){output<-paste(output,"11001010000",sep="")}
+if(checksum==77){output<-paste(output,"11110111010",sep="")}
+if(checksum==78){output<-paste(output,"11000010100",sep="")}
+if(checksum==79){output<-paste(output,"10001111010",sep="")}
+if(checksum==80){output<-paste(output,"10100111100",sep="")}
+if(checksum==81){output<-paste(output,"10010111100",sep="")}
+if(checksum==82){output<-paste(output,"10010011110",sep="")}
+if(checksum==83){output<-paste(output,"10111100100",sep="")}
+if(checksum==84){output<-paste(output,"10011110100",sep="")}
+if(checksum==85){output<-paste(output,"10011110010",sep="")}
+if(checksum==86){output<-paste(output,"11110100100",sep="")}
+if(checksum==87){output<-paste(output,"11110010100",sep="")}
+if(checksum==88){output<-paste(output,"11110010010",sep="")}
+if(checksum==89){output<-paste(output,"11011011110",sep="")}
+if(checksum==90){output<-paste(output,"11011110110",sep="")}
+if(checksum==91){output<-paste(output,"11110110110",sep="")}
+if(checksum==92){output<-paste(output,"10101111000",sep="")}
+if(checksum==93){output<-paste(output,"10100011110",sep="")}
+if(checksum==94){output<-paste(output,"10001011110",sep="")}
+if(checksum==95){output<-paste(output,"10111101000",sep="")}
+if(checksum==96){output<-paste(output,"10111100010",sep="")}
+if(checksum==97){output<-paste(output,"11110101000",sep="")}
+if(checksum==98){output<-paste(output,"11110100010",sep="")}
+if(checksum==99){output<-paste(output,"10111011110",sep="")}
+if(checksum==100){output<-paste(output,"10111101110",sep="")}
+if(checksum==101){output<-paste(output,"11101011110",sep="")}
+if(checksum==102){output<-paste(output,"11110101110",sep="")}
+if(checksum==103){output<-paste(output,"11010000100",sep="")}
+if(checksum==104){output<-paste(output,"11010010000",sep="")}
+if(checksum==105){output<-paste(output,"11010011100",sep="")}
+
+#add stopcode
+output<-paste(output,"1100011101011",sep="")
+
+return(output)
+}
+
+
+scad_code128<-function(x,dm.block.size.h=5,dm.block.size.v=5,pixelsize=1,filename="barcode",offset.h=0,clearfile=T)
+{
+
+  if(clearfile==T)
+  {
+  unlink(paste(filename,".pos.scad",sep=""))
+  unlink(paste(filename,".neg.scad",sep=""))
+  }
+  bc<-unlist(strsplit(code128barcode(x),split = ""))
+  message(bc)
+  for(i in 1:length(bc))
+    {
+    if(bc[i]==0)
+        {
+        scadline<-paste("translate([",i*pixelsize,",",offset.h,",0])  cube(size = [",pixelsize,",",dm.block.size.h,",",dm.block.size.v,"], center=true);",sep = "")
+        write.table(scadline,paste(filename,".neg.scad",sep=""),append = T,quote = F,row.names = F,col.names = F)
+        }
+    if(bc[i]==1)
+        {
+        scadline<-paste("translate([",i*pixelsize,",",offset.h,",0])  cube(size = [",pixelsize,",",dm.block.size.h,",",dm.block.size.v,"], center=true);",sep = "")
+        write.table(scadline,paste(filename,".pos.scad",sep=""),append = T,quote = F,row.names = F,col.names = F)
+        }
+  }
+}
+
+
+scad_code128(x = "Tegwen",pixelsize = 0.4,dm.block.size.h = 4,dm.block.size.v = 4,filename = "Tegwen")
+scad_code128(x = "Becca",pixelsize = 0.4,dm.block.size.h = 4,dm.block.size.v = 4,offset.h = 8,clearfile = F,filename = "Tegwen")
+scad_code128(x = "Tony",pixelsize = 0.4,dm.block.size.h = 4,dm.block.size.v = 4,offset.h = 16,clearfile = F,filename = "Tegwen")
